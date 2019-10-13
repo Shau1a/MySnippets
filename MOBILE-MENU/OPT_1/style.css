@@ -1,0 +1,127 @@
+body {
+	background: royalblue;
+	overflow-x: hidden;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	font-family: sans-serif;
+	font-size: 72px;
+	text-transform: uppercase;
+	color: #000;
+}
+
+.burger-menu_button {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	z-index: 30;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background-color: #2a2a2a;
+}
+
+.burger-menu_button:hover .burger-menu_lines {
+	filter: brightness(.7);
+}
+
+.burger-menu_lines,
+.burger-menu_lines::before,
+.burger-menu_lines::after {
+	position: absolute;
+	width: 40px;
+	height: 6px;
+	background-color: #fff;
+	transition: .2s linear;
+}
+
+.burger-menu_lines {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.burger-menu_lines::before {
+	content: '';
+	top: 12px;
+}
+
+.burger-menu_lines::after {
+	content: '';
+	bottom: 12px;
+}
+
+.burger-menu_active .burger-menu_lines {
+	background-color: transparent;
+}
+
+.burger-menu_active .burger-menu_lines::before {
+	top: 0;
+	transform: rotate(45deg); 
+}
+
+.burger-menu_active .burger-menu_lines::after {
+	top: 0;
+	transform: rotate(-45deg); 
+}
+
+.burger-menu_nav {
+	padding-top: 80px;
+	position: fixed;
+	z-index: 20;
+	display: flex;
+	flex-flow: column;
+	height: 100%;
+	background-color: #2a2a2a;
+	overflow-y: auto;
+	left: -100%;
+	transition: .45s linear;
+}
+
+.burger-menu_active .burger-menu_nav {
+	left: 0;
+}
+
+.burger-menu_link {
+	padding: 30px;
+	font-family: sans-serif;
+	font-size: 32px;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	font-weight: bold;
+	color: #fff;
+}
+
+.burger-menu_link:hover {
+	filter: brightness(.7);
+}
+
+.burger-menu_overlay {
+	visibility: hidden;
+	position: fixed;
+	top: -100%;
+	left: 0;
+	width: 300%;
+	height: 300%;
+	border-radius: 50%;
+	transform: translateX(-300%); 
+	transition: all .45s linear;
+	transform-origin: left center;
+	z-index: 10;
+}
+
+.burger-menu_overlay-active {
+	visibility: visible;
+	background-color: rgba(0,0,0,.5);
+	transform: translateX(0);
+}
